@@ -1,0 +1,194 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+
+
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.tasks{
+  border: 1px;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 5px;
+  display: flex;
+  
+  flex-direction: row;
+  justify-content: space-between;
+  
+  padding: 1rem;
+  text-align: center;
+  max-width: 400px;
+  margin: 10px auto;
+  
+  box-shadow: 0 4px 8px rgba(0, 0,0,0.1);
+  transition: all 0.2s ease-in;
+
+
+}
+.tasks:hover {
+  background-color: #007bff;
+  transform: scale(105%);
+}
+li {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  padding: 7px;
+   
+}
+.addingContainer {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+.addTaskName {
+  display: flex;
+  font-size: 1rem;
+  height: 40px;
+  margin: 5px auto;
+  width: 100%;
+  padding: 2px 2px;
+}
+
+.del {
+  background-color: #c8c8c8;
+  color: rgb(231, 38, 38);
+  text-decoration: none;
+  border: none;
+  padding: 1px;
+  border-radius: 5px;
+  border-color: #ff0909;
+  border-style: solid;
+  border-width: 1px;
+  margin:10px;
+  position:static;
+ 
+}
+
+.del:hover {
+  transform:scale(110%);
+  background-color: red;
+}
+.delIcon {
+  width: 30px;
+
+  
+  
+  
+}
+
+.completeLi {
+  border: 1px;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  border-radius: 5px;
+  display: flex;
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  
+  
+  margin: 10px auto;
+  text-align: center;
+  max-width: 400px;
+  background-color: rgb(49, 221, 112);
+  box-shadow: 0 4px 8px rgba(0, 0,0,0.1);
+  transition: all 0.2s ease-in;
+  color:#24073c ;
+}
+
+.completeLi:hover {
+  background-color: #007bff;
+  transform: scale(105%);
+}
+
+.completeBtn {
+  font-size: 1.2rem;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: green;
+  margin: 10px;
+  
+  }
+  .completeBtn:hover {
+    background-color: rgb(30, 207, 30);
+    box-shadow: 0px 0px 3px 1px rgb(255, 255, 255);
+  }
+
+  .contactContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 10px;
+    transition: all 0.2s ease-in;
+
+  }
+    .contactContainer:hover {
+    
+    border-bottom: 1px solid #c8c8c8;
+    border-width: 1px;
+    padding: 10px;
+    border-radius: 10px;
+
+  }
+
+.contactIcon {
+    display: flex;
+    width: 40px;
+    height: auto;
+    font-size: 10px;
+    background-color: #c8c8c8;
+    border-radius: 5px;
+    padding: 1px;
+    transition: all 0.2s ease-in;
+
+}
+
+
+.contactBtn {
+  padding: 0;
+  margin:auto;
+  background-color: rgb(0, 0, 0, 0);
+  border-width: 0;
+}
+.contactIcon:hover
+ {
+  transform: scale(105%);
+  box-shadow: 0px 0px 3px 2px #80b3ff;
+}
+
+ h4 {
+  text-align: center;
+  font-size: 1.5rem;
+}

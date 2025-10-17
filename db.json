@@ -1,0 +1,19 @@
+{
+  "list": [
+    {
+      "id": "3221",
+      "task": "write homework",
+      "status": "Incomplete"
+    },
+    {
+      "id": "5d4e",
+      "task": "going for conclave",
+      "status": "Incomplete"
+    },
+    {
+      "id": "0c32",
+      "task": "Making breakfast",
+      "status": "Incomplete"
+    }
+  ]
+}
