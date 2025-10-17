@@ -31,7 +31,7 @@ export default function List() {
     }
 
     const delTask = async(id)=> {
-        let response = await fetch(url+'/'+id, {
+        let response = await fetch(`${url}?id=${id}`, {
             method: 'delete'
         })
         response=response.json();
@@ -46,7 +46,7 @@ export default function List() {
         console.log(id, newcomplete)
         ToggleComplete(newcomplete)
         console.log(newcomplete)
-        let response = await fetch(url+'/'+id, {
+        let response = await fetch(`${url}?id=${id}`, {
             method:'PUT',
             body: JSON.stringify({id, task, status: newcomplete})
         })
