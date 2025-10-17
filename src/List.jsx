@@ -2,8 +2,8 @@ import {  useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function List() {
-    const url="http://localhost:3000/list";
-    const [newTask, setNewTask] = useState(' ')
+        const url="/api/list";
+        const [newTask, setNewTask] = useState(' ')
 
     const createTask = async ()=> {
         console.log(newTask);
