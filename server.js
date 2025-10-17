@@ -13,6 +13,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(join(__dirname, 'dist')));
 
+// Generate random ID
+const generateId = () => {
+  return Math.random().toString(36).substring(2, 6);
+};
+
 // Read db.json
 const getDb = () => {
   const data = readFileSync('./db.json', 'utf-8');
@@ -31,7 +36,11 @@ app.get('/api/list', (req, res) => {
 
 app.post('/api/list', (req, res) => {
   const db = getDb();
-  const newItem = { id: Date.now(), ...req.body };
+  const newItem = { 
+    id: generateId(), 
+    task: req.body.task,
+    status: req.body.status || "Incomplete"
+  };
   db.list = [...(db.list || []), newItem];
   saveDb(db);
   res.status(201).json(newItem);
@@ -39,15 +48,25 @@ app.post('/api/list', (req, res) => {
 
 app.put('/api/list/:id', (req, res) => {
   const db = getDb();
-  const id = parseInt(req.params.id);
-  db.list = db.list.map(item => item.id === id ? { ...item, ...req.body } : item);
-  saveDb(db);
-  res.json(db.list.find(item => item.id === id));
+  const id = req.params.id;
+  const index = db.list.findIndex(item => item.id === id);
+  
+  if (index !== -1) {
+    db.list[index] = { 
+      ...db.list[index], 
+      task: req.body.task,
+      status: req.body.status 
+    };
+    saveDb(db);
+    res.json(db.list[index]);
+  } else {
+    res.status(404).json({ error: 'Item not found' });
+  }
 });
 
 app.delete('/api/list/:id', (req, res) => {
   const db = getDb();
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
   db.list = db.list.filter(item => item.id !== id);
   saveDb(db);
   res.status(204).send();
@@ -60,4 +79,5 @@ app.get('*', (req, res) => {
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
+  console.log(`API available at http://localhost:${port}/api`);
 });
