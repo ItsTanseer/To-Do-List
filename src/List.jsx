@@ -2,13 +2,16 @@ import {  useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function List() {
-        const url="/api/list";
-        const [newTask, setNewTask] = useState(' ')
+        const url="http://localhost:3000/list";
+        const [newTask, setNewTask] = useState('')
 
     const createTask = async ()=> {
         console.log(newTask);
         let taskRes = await fetch(url, {
-            method: 'Post',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({task: newTask, status: "Incomplete"})
         });
         taskRes=await taskRes.json();
@@ -31,8 +34,8 @@ export default function List() {
     }
 
     const delTask = async(id)=> {
-        let response = await fetch(`${url}?id=${id}`, {
-            method: 'delete'
+        let response = await fetch(`${url}/${id}`, {
+            method: 'DELETE'
         })
         response=response.json();
         if (response) {
@@ -46,8 +49,11 @@ export default function List() {
         console.log(id, newcomplete)
         ToggleComplete(newcomplete)
         console.log(newcomplete)
-        let response = await fetch(`${url}?id=${id}`, {
+        let response = await fetch(`${url}/${id}`, {
             method:'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({id, task, status: newcomplete})
         })
         if (response) {
@@ -66,7 +72,7 @@ export default function List() {
             <h3>
                 {
                     list.map((l)=>(
-                        <ul className={l.status==="Complete"?"completeLi":"tasks"}>
+                        <ul key = {l.id} className={l.status==="Complete"?"completeLi":"tasks"}>
                             
                             <li>{l.task}</li>
                             <li>{l.status}</li>
@@ -78,7 +84,7 @@ export default function List() {
             </h3>
                 <div className="addingContainer">
                     <h3>Add tasks</h3>
-                    <input className="addTaskName" type="text" placeholder="Enter task name" name="addtask"
+                    <input className="addTaskName" type="text" placeholder="Enter task name" name="addtask" value={newTask}
                     onChange={(event)=>
                         setNewTask(event.target.value)
                     }/>
